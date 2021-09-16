@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+
+    <div class="container">
+
+        <div class="row">
+
+            <iframe class="youtube-video" id="embed_video" width="560" height="315" src="https://www.youtube.com/embed/LrJbrydDf2s?enablejsapi=1&version=3&playerapiid=ytplayer" modestbranding="0" controls="0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+
+        <div class="row" style="padding-top:20px">
+
+            <div class="col-sm-3" id="play_button">Play</div>
+            <div class="col-sm-3" id="pause_button">Pause</div>
+            <div class="col-sm-3" id="stop_button">Stop</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $("#play_button").click(function () {
+
+        //play video
+        $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+
+    });
+
+    $("#pause_button").click(function () {
+
+        //pause video
+        $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+
+    });
+
+    $("#stop_button").click(function () {
+
+        //stop video
+        $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+
+    });
+
+</script>
